@@ -2,37 +2,35 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package dz.umab.chat.dskclient.GUI;
 
 
-import client.Client;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import dz.umab.chat.dskclient.client.Client;
+
+import javax.swing.*;
+import java.io.*;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.SwingWorker;
 
 /**
- *
  * @author user
  */
 public class FileSender extends SwingWorker {
     BufferedOutputStream sOut = null;
     FileInputStream in = null;
-    private Long fileSize;
-    private String filePath;
     Socket socket = null;
     long serial = 0;
+    private Long fileSize;
+    private String filePath;
+
     public FileSender(String filePath, Long fileSize, long serial) {
         this.fileSize = new Long(fileSize);
         this.filePath = filePath;
         this.serial = serial;
     }
+
     private void init() {
         File file = new File(filePath);
         try {
@@ -74,10 +72,10 @@ public class FileSender extends SwingWorker {
                 fin = true;
             }
         }
-        System.out.println("nbreBytesTransferes= " +nbreBytesTransferes);
+        System.out.println("nbreBytesTransferes= " + nbreBytesTransferes);
         sOut.close();
         in.close();
-        socket.close();        
+        socket.close();
         return null;
     }
 

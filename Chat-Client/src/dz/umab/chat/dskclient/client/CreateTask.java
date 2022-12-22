@@ -2,16 +2,16 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package client;
+package dz.umab.chat.dskclient.client;
 
-import GUI.MainFrame;
+import dz.umab.chat.dskclient.GUI.MainFrame;
+
+import javax.swing.*;
 import java.util.concurrent.Callable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.SwingUtilities;
 
 /**
- *
  * @author user
  */
 public class CreateTask implements Callable {
@@ -21,8 +21,8 @@ public class CreateTask implements Callable {
     ObserverInterface observer;
     String cordonne = "";
 
-    public CreateTask(String cordonne,ObserverInterface observer) {
-this.observer = observer;
+    public CreateTask(String cordonne, ObserverInterface observer) {
+        this.observer = observer;
         this.cordonne = cordonne;
     }
 
@@ -50,11 +50,12 @@ this.observer = observer;
             result = -1;
             System.out.println("CreateTask no Server ");
         }
-         SwingUtilities.invokeLater(new RunnableImpl(result));
-        
+        SwingUtilities.invokeLater(new RunnableImpl(result));
+
         return 0;
     }
-        private class RunnableImpl implements Runnable {
+
+    private class RunnableImpl implements Runnable {
 
         private final int result;
 

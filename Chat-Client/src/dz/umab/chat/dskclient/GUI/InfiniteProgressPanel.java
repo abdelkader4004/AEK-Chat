@@ -1,24 +1,16 @@
-package GUI;
+package dz.umab.chat.dskclient.GUI;
 
-import client.ObserverInterface;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
+import dz.umab.chat.dskclient.client.ObserverInterface;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.font.FontRenderContext;
 import java.awt.font.TextLayout;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Area;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
-
-import javax.swing.JComponent;
-import javax.swing.JOptionPane;
+import java.awt.geom.*;
 
 public class InfiniteProgressPanel extends JComponent implements MouseListener, KeyListener {
 
@@ -31,9 +23,9 @@ public class InfiniteProgressPanel extends JComponent implements MouseListener, 
     protected String text = "";
     protected int barsCount = 20;
     protected float fps = 15.0f;
-    ObserverInterface observer;
     //ContactListPanel plist;
     protected RenderingHints hints = null;
+    ObserverInterface observer;
 
     public InfiniteProgressPanel(ObserverInterface panelObserverInterface) {
         this("");
@@ -69,13 +61,13 @@ public class InfiniteProgressPanel extends JComponent implements MouseListener, 
         this.hints.put(RenderingHints.KEY_FRACTIONALMETRICS, RenderingHints.VALUE_FRACTIONALMETRICS_ON);
     }
 
+    public String getText() {
+        return text;
+    }
+
     public void setText(String text) {
         repaint();
         this.text = text;
-    }
-
-    public String getText() {
-        return text;
     }
 
     public void start() {
@@ -95,8 +87,9 @@ public class InfiniteProgressPanel extends JComponent implements MouseListener, 
             animation.start();
         }
         System.out.println("Hy stop était appelée");
-       
+
     }
+
     public void interrupt() {
         if (animation != null) {
             animation.interrupt();
@@ -120,7 +113,7 @@ public class InfiniteProgressPanel extends JComponent implements MouseListener, 
             g2.setRenderingHints(hints);
 
             g2.setColor(new Color(255, 255, 255, (int) (alphaLevel * shield)));
-            g2.fillRect(-getWidth()/2,-getHeight()/2, getWidth()*2, getHeight()*2);
+            g2.fillRect(-getWidth() / 2, -getHeight() / 2, getWidth() * 2, getHeight() * 2);
 
             for (int i = 0; i < ticker.length; i++) {
                 int channel = 224 - 128 / (i + 1);
@@ -182,7 +175,6 @@ public class InfiniteProgressPanel extends JComponent implements MouseListener, 
     }
 
 
-
     public void keyTyped(KeyEvent e) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
@@ -193,6 +185,21 @@ public class InfiniteProgressPanel extends JComponent implements MouseListener, 
 
     public void keyReleased(KeyEvent e) {
         throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public void mouseClicked(MouseEvent e) {
+    }
+
+    public void mousePressed(MouseEvent e) {
+    }
+
+    public void mouseReleased(MouseEvent e) {
+    }
+
+    public void mouseEntered(MouseEvent e) {
+    }
+
+    public void mouseExited(MouseEvent e) {
     }
 
     protected class Animator implements Runnable {
@@ -258,22 +265,7 @@ public class InfiniteProgressPanel extends JComponent implements MouseListener, 
             }
 
 
-        //observer.removePane();
+            //observer.removePane();
         }
-    }
-
-    public void mouseClicked(MouseEvent e) {
-    }
-
-    public void mousePressed(MouseEvent e) {
-    }
-
-    public void mouseReleased(MouseEvent e) {
-    }
-
-    public void mouseEntered(MouseEvent e) {
-    }
-
-    public void mouseExited(MouseEvent e) {
     }
 }

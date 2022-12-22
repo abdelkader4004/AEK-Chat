@@ -1,16 +1,16 @@
-package client;
+package dz.umab.chat.dskclient.client;
 
 /**
  * <p>Titre : </p>
  * <p>Description : </p>
  * <p>Copyright : Copyright (c) 2010</p>
- * <p>Société : </p>
+ * <p>Sociï¿½tï¿½ : </p>
+ *
  * @author non attribuable
  * @version 1.0
  */
 
-public interface  ClientInterface {
-
+public interface ClientInterface {
 
 
 }

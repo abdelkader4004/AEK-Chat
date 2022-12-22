@@ -1,16 +1,18 @@
-package GUI;
+package dz.umab.chat.dskclient.GUI;
 
-import client.*;
+import dz.umab.chat.dskclient.client.*;
+import com.borland.jbcl.layout.VerticalFlowLayout;
+
 import javax.swing.*;
-import com.borland.jbcl.layout.*;
-import java.awt.event.*;
 import java.awt.*;
+import java.awt.event.*;
 
 /**
  * <p>Titre : </p>
  * <p>Description : </p>
  * <p>Copyright : Copyright (c) 2010</p>
  * <p>Soci�t� : </p>
+ *
  * @author non attribuable
  * @version 1.0
  */
@@ -52,6 +54,14 @@ public class ConnectionPane extends Panneau implements ClientInterface {
         }
     }
 
+    public ConnectionPane() {
+        try {
+            jbInit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public void authentifier() {
         boolean b = false;
         String login = "";
@@ -64,8 +74,6 @@ public class ConnectionPane extends Panneau implements ClientInterface {
         // cree une tache pour authentifier   et poster sur le worker
 
         ClientApp.worker.submit(authenticateTask);
-
-
 
 
     } //etablirUneConnexio
@@ -150,14 +158,6 @@ public class ConnectionPane extends Panneau implements ClientInterface {
         }*/
     }
 
-    public ConnectionPane() {
-        try {
-            jbInit();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     void passWord_actionPerformed(ActionEvent e) {
     }
 
@@ -202,7 +202,7 @@ public class ConnectionPane extends Panneau implements ClientInterface {
 }
 
 class PanneauConnexion_btSubmit_actionAdapter
-        implements java.awt.event.ActionListener {
+        implements ActionListener {
 
     ConnectionPane adaptee;
 
@@ -216,7 +216,7 @@ class PanneauConnexion_btSubmit_actionAdapter
 }
 
 class PanneauConnexion_textPseudo_actionAdapter
-        implements java.awt.event.ActionListener {
+        implements ActionListener {
 
     ConnectionPane adaptee;
 
@@ -230,7 +230,7 @@ class PanneauConnexion_textPseudo_actionAdapter
 }
 
 class ConnectionPane_btSubmit_actionAdapter
-        implements java.awt.event.ActionListener {
+        implements ActionListener {
 
     ConnectionPane adaptee;
 
@@ -244,7 +244,7 @@ class ConnectionPane_btSubmit_actionAdapter
 }
 
 class ConnectionPane_passWord_actionAdapter
-        implements java.awt.event.ActionListener {
+        implements ActionListener {
 
     ConnectionPane adaptee;
 
@@ -258,7 +258,7 @@ class ConnectionPane_passWord_actionAdapter
 }
 
 class ConnectionPane_textPseudo_keyAdapter
-        extends java.awt.event.KeyAdapter {
+        extends KeyAdapter {
 
     ConnectionPane adaptee;
 
@@ -276,7 +276,7 @@ class ConnectionPane_textPseudo_keyAdapter
 }
 
 class ConnectionPane_passWord_keyAdapter
-        extends java.awt.event.KeyAdapter {
+        extends KeyAdapter {
 
     ConnectionPane adaptee;
 
@@ -298,7 +298,7 @@ class ConnectionPane_passWord_keyAdapter
 }
 
 class ConnectionPane_passWord_inputMethodAdapter
-        implements java.awt.event.InputMethodListener {
+        implements InputMethodListener {
 
     ConnectionPane adaptee;
 
@@ -315,7 +315,7 @@ class ConnectionPane_passWord_inputMethodAdapter
 }
 
 class ConnectionPane_passWord_focusAdapter
-        extends java.awt.event.FocusAdapter {
+        extends FocusAdapter {
 
     ConnectionPane adaptee;
 
@@ -329,7 +329,7 @@ class ConnectionPane_passWord_focusAdapter
 }
 
 class ConnectionPane_passWord_mouseAdapter
-        extends java.awt.event.MouseAdapter {
+        extends MouseAdapter {
 
     ConnectionPane adaptee;
 
@@ -342,7 +342,7 @@ class ConnectionPane_passWord_mouseAdapter
     }
 }
 
-class ConnectionPane_labCreate_mouseAdapter extends java.awt.event.MouseAdapter {
+class ConnectionPane_labCreate_mouseAdapter extends MouseAdapter {
 
     ConnectionPane adaptee;
 

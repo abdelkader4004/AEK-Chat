@@ -1,13 +1,15 @@
-package client;
+package dz.umab.chat.dskclient.client;
 
-import GUI.ChatPanel;
-import javax.swing.JPanel;
+import dz.umab.chat.dskclient.GUI.ChatPanel;
+
+import javax.swing.*;
 
 /**
  * <p>Titre : </p>
  * <p>Description : </p>
  * <p>Copyright : Copyright (c) 2010</p>
  * <p>Soci�t� : </p>
+ *
  * @author non attribuable
  * @version 1.0
  */
@@ -46,5 +48,6 @@ public interface ObserverInterface {
     public void removePaneCreation();
 
     public void addConnectionPane();
-    public void result(int task,int authenticated);
+
+    public void result(int task, int authenticated);
 }

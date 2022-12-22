@@ -2,23 +2,26 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package dz.umab.chat.dskclient.GUI;
 
 
 //Create a Draggable JWindow
+
+import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.*;
 import java.net.MalformedURLException;
+import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.*;
-import javax.swing.border.*;
-import java.util.TimerTask;
 
 public class BreakingEventWindow extends JWindow {
 
-    private int X = 0;
-    private int Y = 0;
+    protected String alert, info;
+    protected BreakingEventWindowInterface breakingEventWindowInterface;
+    protected boolean confirmation = false;
     JPanel jPanel1 = new Panneau();
     JButton jButton1 = new JButton();
     BorderLayout borderLayout1 = new BorderLayout();
@@ -30,10 +33,10 @@ public class BreakingEventWindow extends JWindow {
     TitledBorder titledBorder1;
     JLabel jLabel1 = new JLabel();
     JLabel jLabel2 = new JLabel();
-    protected String alert,  info;
     String message;
-    protected BreakingEventWindowInterface breakingEventWindowInterface;
-    protected boolean confirmation = false;
+    private int X = 0;
+    private int Y = 0;
+
     public BreakingEventWindow(String alert, String message) {
         this.alert = alert;
         this.message = message;
@@ -112,8 +115,9 @@ public class BreakingEventWindow extends JWindow {
         new java.util.Timer().schedule(new Temporisateur(this), 0, 10);
         setVisible(true);
     }
+
     public BreakingEventWindow(String alert, String message, BreakingEventWindowInterface breakingEventWindowInterface, String info) {
-        this( alert,  message);
+        this(alert, message);
         confirmation = true;
         this.info = info;
         jButton1.setText("Accepter");
@@ -203,7 +207,6 @@ public class BreakingEventWindow extends JWindow {
     }
 
 
-
     void jButton1_actionPerformed(ActionEvent e) {
 
         confirmation = false;
@@ -233,7 +236,7 @@ public class BreakingEventWindow extends JWindow {
 }
 
 class BreakingEventWindow_jButton1_actionAdapter
-        implements java.awt.event.ActionListener {
+        implements ActionListener {
 
     BreakingEventWindow adaptee;
 
@@ -247,7 +250,7 @@ class BreakingEventWindow_jButton1_actionAdapter
 }
 
 class BreakingEventWindow_jButton2_actionAdapter
-        implements java.awt.event.ActionListener {
+        implements ActionListener {
 
     BreakingEventWindow adaptee;
 
@@ -261,7 +264,7 @@ class BreakingEventWindow_jButton2_actionAdapter
 }
 
 class BreakingEventWindow_jLabel1_mouseMotionAdapter
-        extends java.awt.event.MouseMotionAdapter {
+        extends MouseMotionAdapter {
 
     BreakingEventWindow adaptee;
 
@@ -276,7 +279,7 @@ class BreakingEventWindow_jLabel1_mouseMotionAdapter
 }
 
 class BreakingEventWindow_jLabel1_mouseAdapter
-        extends java.awt.event.MouseAdapter {
+        extends MouseAdapter {
 
     BreakingEventWindow adaptee;
 

@@ -1,18 +1,22 @@
-package GUI;
+package dz.umab.chat.dskclient.GUI;
 
-import client.FilePaneInterface;
-import java.awt.*;
-import java.beans.PropertyChangeEvent;
-import java.io.FileNotFoundException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import dz.umab.chat.dskclient.client.FilePaneInterface;
+import com.borland.jbcl.layout.VerticalFlowLayout;
+
 import javax.swing.*;
-import com.borland.jbcl.layout.*;
-import javax.swing.border.*;
-import java.awt.event.*;
+import javax.swing.border.Border;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.TitledBorder;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -20,6 +24,7 @@ import java.io.FileInputStream;
  * <p>Description : </p>
  * <p>Copyright : Copyright (c) 2010</p>
  * <p>Société : </p>
+ *
  * @author non attribuable
  * @version 1.0
  */
@@ -116,7 +121,7 @@ public class FileSendPane extends JPanel implements FilePaneInterface {
                 File file = new File(fs.getSelectedFile().getPath());
                 try {
                     fin = new FileInputStream(file);
-                // new FileSender(MainFrame.client.getSocket(), fin).execute();
+                    // new FileSender(MainFrame.client.getSocket(), fin).execute();
 
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(FileSendPane.class.getName()).log(Level.SEVERE, null, ex);
@@ -155,7 +160,8 @@ public class FileSendPane extends JPanel implements FilePaneInterface {
     void btStop_actionPerformed(ActionEvent e) {
     }
 }
-class FileSendPane_btBrowse_actionAdapter implements java.awt.event.ActionListener {
+
+class FileSendPane_btBrowse_actionAdapter implements ActionListener {
 
     FileSendPane adaptee;
 
@@ -168,7 +174,7 @@ class FileSendPane_btBrowse_actionAdapter implements java.awt.event.ActionListen
     }
 }
 
-class FileSendPane_btPause_actionAdapter implements java.awt.event.ActionListener {
+class FileSendPane_btPause_actionAdapter implements ActionListener {
 
     FileSendPane adaptee;
 
@@ -181,7 +187,7 @@ class FileSendPane_btPause_actionAdapter implements java.awt.event.ActionListene
     }
 }
 
-class FileSendPane_btStart_actionAdapter implements java.awt.event.ActionListener {
+class FileSendPane_btStart_actionAdapter implements ActionListener {
 
     FileSendPane adaptee;
 
@@ -194,7 +200,7 @@ class FileSendPane_btStart_actionAdapter implements java.awt.event.ActionListene
     }
 }
 
-class FileSendPane_btStop_actionAdapter implements java.awt.event.ActionListener {
+class FileSendPane_btStop_actionAdapter implements ActionListener {
 
     FileSendPane adaptee;
 

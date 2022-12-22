@@ -2,27 +2,27 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package client;
+package dz.umab.chat.dskclient.client;
 
-import GUI.MainFrame;
-import GUI.BreakingEventWindow;
-import GUI.FileReceivePane;
+import dz.umab.chat.dskclient.GUI.BreakingEventWindow;
+import dz.umab.chat.dskclient.GUI.FileReceivePane;
+import dz.umab.chat.dskclient.GUI.MainFrame;
+
 import java.net.Socket;
 import java.util.StringTokenizer;
 
 /**
- *
  * @author user
  */
 public class ReceiveTask implements Runnable {
 
-    private Socket socket;
     ObserverInterface observer;
-    // persistant par les autre 
+    // persistant par les autre
     volatile boolean tchating = true;
     Client client;
     String message = "";
     StringTokenizer st1, st2;
+    private Socket socket;
 
     public ReceiveTask(ObserverInterface observer, Client client) {
         this.observer = observer;
@@ -62,7 +62,7 @@ public class ReceiveTask implements Runnable {
             observer.changeState(client.getPseudo(new Long(id)), "1");
 
 
-        //System.out.println("contact= " + st2.nextToken());
+            //System.out.println("contact= " + st2.nextToken());
 
 
         }
@@ -87,12 +87,12 @@ public class ReceiveTask implements Runnable {
                 } else {
                     new BreakingEventWindow("Connexion", client.getPseudo(new Long(id)) + " vient de se connecter ");
                 }
-            //new GUI.BreakingEventWindow();
-            // System.out.println(message);
+                //new GUI.BreakingEventWindow();
+                // System.out.println(message);
             } else {
                 if (message.startsWith("SendIM")) {
                     st2.nextToken();
-                    String idEmetteur= st2.nextToken();
+                    String idEmetteur = st2.nextToken();
                     String mespur = st2.nextToken();
                     observer.addMessage(mespur, idEmetteur);
                 } else {
@@ -115,15 +115,12 @@ public class ReceiveTask implements Runnable {
                                     }
                                 }
 
-                            //  
+                                //
 
                             }//else resend
 
 
-
                         }//else ajouter
-
-
 
 
                     }// else  Rajouter
@@ -185,7 +182,7 @@ public class ReceiveTask implements Runnable {
                     new BreakingEventWindow("Information", " le transfer va commencer vers " + MainFrame.client.getPseudo(new Long(id)));
                     MainFrame.client.fileTable.get(new Long(localSerial)).startTransfert(4l);
                     MainFrame.client.addFielSerial(new Long(serial), new Long(localSerial));
-                //MainFrame.client.WriteMessage("Send" + "," + 4);
+                    //MainFrame.client.WriteMessage("Send" + "," + 4);
                 } else {
                     System.out.println("repense inconnue");
                 }

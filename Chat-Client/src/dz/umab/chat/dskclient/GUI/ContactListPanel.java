@@ -1,10 +1,14 @@
-package GUI;
+package dz.umab.chat.dskclient.GUI;
 
-import client.ObserverInterface;
-import client.OurString;
+import dz.umab.chat.dskclient.client.ObserverInterface;
+import dz.umab.chat.dskclient.client.OurString;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.StringTokenizer;
 
 /**
@@ -12,20 +16,21 @@ import java.util.StringTokenizer;
  * <p>Description : </p>
  * <p>Copyright : Copyright (c) 2010</p>
  * <p>Soci\uFFFDt\uFFFD : </p>
+ *
  * @author non attribuable
  * @version 1.0
  */
 public class ContactListPanel extends Panneau implements BreakingEventWindowInterface {
 
     final static int ICON_COLUMN_WIDTH = 30;
+    public ContactListTableModel model = new ContactListTableModel();
     JScrollPane jScrollPane1 = new JScrollPane();
     BorderLayout borderLayout1 = new BorderLayout();
-    public ContactListTableModel model = new ContactListTableModel();
     JTable table = new JTable(model);
     JPanel jPanel1 = new JPanel();
     JButton btAjouter = new JButton();
-   
-    
+
+
     ObserverInterface observer;
     JPopupMenu popupMenu = new JPopupMenu();
     JMenuItem discutionCreateMenuItem = new JMenuItem();
@@ -79,7 +84,7 @@ public class ContactListPanel extends Panneau implements BreakingEventWindowInte
         this.setLayout(borderLayout1);
         btAjouter.setText("Ajouter un contact");
         btAjouter.addActionListener(new ContactListPanel_btAgouter_actionAdapter(this));
-                setBackground(Color.orange);
+        setBackground(Color.orange);
         discutionCreateMenuItem.setText("Créer une discussion");
         contactDeleteMenuItem.setText("Supprimer");
         fileSendMenuItem.setText("Envoyer un fichier");
@@ -99,8 +104,8 @@ public class ContactListPanel extends Panneau implements BreakingEventWindowInte
         this.add(jScrollPane1, BorderLayout.CENTER);
         this.add(jPanel1, BorderLayout.NORTH);
         jPanel1.add(btAjouter, null);
-     
-        
+
+
         jScrollPane1.getViewport().add(table, null);
         table.getColumnModel().getColumn(0).setMaxWidth(ICON_COLUMN_WIDTH);
         table.getColumnModel().getColumn(0).setMinWidth(ICON_COLUMN_WIDTH);
@@ -143,8 +148,6 @@ public class ContactListPanel extends Panneau implements BreakingEventWindowInte
         observer.addChatPane(proom, model.getPseudo(table.getSelectedRow()));
 
 
-
-
     }
 
     void btFileSend_actionPerformed(ActionEvent e) {
@@ -167,7 +170,7 @@ public class ContactListPanel extends Panneau implements BreakingEventWindowInte
 }
 
 class ContactListPanel_btAgouter_actionAdapter
-        implements java.awt.event.ActionListener {
+        implements ActionListener {
 
     ContactListPanel adaptee;
 
@@ -181,7 +184,7 @@ class ContactListPanel_btAgouter_actionAdapter
 }
 
 class ContactListPanel_btSupprimer_actionAdapter
-        implements java.awt.event.ActionListener {
+        implements ActionListener {
 
     ContactListPanel adaptee;
 
@@ -194,7 +197,7 @@ class ContactListPanel_btSupprimer_actionAdapter
     }
 }
 
-class ContactListPanel_btCreateChatRoom_actionAdapter implements java.awt.event.ActionListener {
+class ContactListPanel_btCreateChatRoom_actionAdapter implements ActionListener {
 
     ContactListPanel adaptee;
 
@@ -207,7 +210,7 @@ class ContactListPanel_btCreateChatRoom_actionAdapter implements java.awt.event.
     }
 }
 
-class ContactListPanel_btFileSend_actionAdapter implements java.awt.event.ActionListener {
+class ContactListPanel_btFileSend_actionAdapter implements ActionListener {
 
     ContactListPanel adaptee;
 
@@ -220,7 +223,7 @@ class ContactListPanel_btFileSend_actionAdapter implements java.awt.event.Action
     }
 }
 
-class ContactListPanel_fileSendMenuItem_actionAdapter implements java.awt.event.ActionListener {
+class ContactListPanel_fileSendMenuItem_actionAdapter implements ActionListener {
 
     ContactListPanel adaptee;
 
@@ -233,7 +236,7 @@ class ContactListPanel_fileSendMenuItem_actionAdapter implements java.awt.event.
     }
 }
 
-class ContactListPanel_contactDeleteMenuItem_actionAdapter implements java.awt.event.ActionListener {
+class ContactListPanel_contactDeleteMenuItem_actionAdapter implements ActionListener {
 
     ContactListPanel adaptee;
 
@@ -246,7 +249,7 @@ class ContactListPanel_contactDeleteMenuItem_actionAdapter implements java.awt.e
     }
 }
 
-class ContactListPanel_discutionCreateMenuItem_actionAdapter implements java.awt.event.ActionListener {
+class ContactListPanel_discutionCreateMenuItem_actionAdapter implements ActionListener {
 
     ContactListPanel adaptee;
 
@@ -259,7 +262,7 @@ class ContactListPanel_discutionCreateMenuItem_actionAdapter implements java.awt
     }
 }
 
-class ContactListPanel_table_actionAdapter implements java.awt.event.MouseListener {
+class ContactListPanel_table_actionAdapter implements MouseListener {
 
     ContactListPanel adaptee;
 

@@ -3,13 +3,12 @@
  * and open the template in the editor.
  */
 
-package GUI;
+package dz.umab.chat.dskclient.GUI;
 
 /**
- *
  * @author user
  */
 public interface BreakingEventWindowInterface {
-    public void reponse(boolean b,String info);
+    public void reponse(boolean b, String info);
 
 }

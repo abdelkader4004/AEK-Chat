@@ -1,8 +1,6 @@
-
-package GUI;
+package dz.umab.chat.dskclient.GUI;
 
 /**
- *
  * @author user
  */
 
@@ -20,37 +18,36 @@ import java.awt.*;
  */
 
 public class messagePane
-    extends JPanel {
-  JLabel SenderLogin = new JLabel();
-  JLabel labMessage = new JLabel();
-  BorderLayout borderLayout1 = new BorderLayout();
-  public messagePane(Icon userIcon, String pseudo, String message,
-                     Icon emoticone) {
-    try {
-      jbInit(userIcon, pseudo, message, emoticone);
-    }
-    catch (Exception e) {
-      e.printStackTrace();
-    }
-  }
+        extends JPanel {
+    JLabel SenderLogin = new JLabel();
+    JLabel labMessage = new JLabel();
+    BorderLayout borderLayout1 = new BorderLayout();
 
-  private void jbInit(Icon userIcon, String pseudo, String message,
-                      Icon emoticone) throws Exception {
-
-    SenderLogin.setText(pseudo);
-    if (emoticone == null) {
-      labMessage.setText(message);
+    public messagePane(Icon userIcon, String pseudo, String message,
+                       Icon emoticone) {
+        try {
+            jbInit(userIcon, pseudo, message, emoticone);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-    else {
-      labMessage.setIcon(emoticone);
-      if (message != null) {
-        labMessage.setText(message);
-      }
 
+    private void jbInit(Icon userIcon, String pseudo, String message,
+                        Icon emoticone) throws Exception {
+
+        SenderLogin.setText(pseudo);
+        if (emoticone == null) {
+            labMessage.setText(message);
+        } else {
+            labMessage.setIcon(emoticone);
+            if (message != null) {
+                labMessage.setText(message);
+            }
+
+        }
+        this.setLayout(borderLayout1);
+        this.add(SenderLogin, BorderLayout.NORTH);
+        this.add(labMessage, BorderLayout.CENTER);
     }
-    this.setLayout(borderLayout1);
-    this.add(SenderLogin, BorderLayout.NORTH);
-    this.add(labMessage, BorderLayout.CENTER);
-  }
 
 }

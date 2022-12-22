@@ -1,24 +1,26 @@
-package client;
+package dz.umab.chat.dskclient.client;
 
-import GUI.MainFrame;
-import javax.swing.UIManager;
+import dz.umab.chat.dskclient.GUI.MainFrame;
+
+import javax.swing.*;
 import java.awt.*;
+import java.net.URL;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.net.URL;
 
 /**
  * <p>Titre : </p>
  * <p>Description : </p>
  * <p>Copyright : Copyright (c) 2010</p>
  * <p>Société : </p>
+ *
  * @author non attribuable
  * @version 1.0
  */
 public class ClientApp {
 
-    boolean packFrame = false;
     static public ExecutorService worker = Executors.newFixedThreadPool(3);
+    boolean packFrame = false;
     //Construire l'application
 
     public ClientApp() {
@@ -64,7 +66,7 @@ public class ClientApp {
 
         try {
             Client.serverHost = args[0];
-           Client.fileServerHost= args[1];
+            Client.fileServerHost = args[1];
         } catch (Exception e) {
             e.printStackTrace();
         }

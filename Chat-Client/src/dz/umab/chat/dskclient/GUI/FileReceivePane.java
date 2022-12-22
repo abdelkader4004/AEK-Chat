@@ -1,12 +1,14 @@
-package GUI;
+package dz.umab.chat.dskclient.GUI;
 
-import client.FilePaneInterface;
-import client.ObserverInterface;
-import java.awt.*;
-import com.borland.jbcl.layout.*;
-import java.beans.PropertyChangeEvent;
+import dz.umab.chat.dskclient.client.FilePaneInterface;
+import dz.umab.chat.dskclient.client.ObserverInterface;
+import com.borland.jbcl.layout.VerticalFlowLayout;
+
 import javax.swing.*;
-import java.awt.event.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.FileOutputStream;
 import java.util.StringTokenizer;
@@ -16,6 +18,7 @@ import java.util.StringTokenizer;
  * <p>Description : </p>
  * <p>Copyright : Copyright (c) 2010</p>
  * <p>Soci�t� : </p>
+ *
  * @author non attribuable
  * @version 1.0
  */
@@ -150,7 +153,7 @@ public class FileReceivePane extends JPanel implements BreakingEventWindowInterf
                         if ("progress".equalsIgnoreCase(evt.getPropertyName())) {
 
                             jProgressBar1.setValue((Integer) evt.getNewValue());
-                            labSpeed.setText("transféré: "+(Integer) evt.getNewValue() + "");
+                            labSpeed.setText("transféré: " + (Integer) evt.getNewValue() + "");
                         }
                     }
                 });
@@ -158,7 +161,7 @@ public class FileReceivePane extends JPanel implements BreakingEventWindowInterf
     }
 }
 
-class FileReceivePane_btStop_actionAdapter implements java.awt.event.ActionListener {
+class FileReceivePane_btStop_actionAdapter implements ActionListener {
 
     FileReceivePane adaptee;
 
@@ -171,7 +174,7 @@ class FileReceivePane_btStop_actionAdapter implements java.awt.event.ActionListe
     }
 }
 
-class FileReceivePane_btPause_actionAdapter implements java.awt.event.ActionListener {
+class FileReceivePane_btPause_actionAdapter implements ActionListener {
 
     FileReceivePane adaptee;
 
@@ -184,7 +187,7 @@ class FileReceivePane_btPause_actionAdapter implements java.awt.event.ActionList
     }
 }
 
-class FileReceivePane_btBrowse_actionAdapter implements java.awt.event.ActionListener {
+class FileReceivePane_btBrowse_actionAdapter implements ActionListener {
 
     FileReceivePane adaptee;
 

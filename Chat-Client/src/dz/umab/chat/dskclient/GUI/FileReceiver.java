@@ -2,20 +2,16 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package dz.umab.chat.dskclient.GUI;
 
-import client.Client;
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.PrintWriter;
+import dz.umab.chat.dskclient.client.Client;
+
+import javax.swing.*;
+import java.io.*;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import javax.swing.SwingWorker;
 
 /**
- *
  * @author user
  */
 public class FileReceiver extends SwingWorker {
@@ -23,10 +19,10 @@ public class FileReceiver extends SwingWorker {
     //BufferedWriter sOut = null;
     BufferedInputStream sIn = null;
     FileOutputStream fOut = null;
-    private PrintWriter outStream;
     long fileSize;
     String fileName;
     long serial = 0;
+    private PrintWriter outStream;
 
     public FileReceiver(String fileName, String fileSize, long serial) {
         this.fileSize = new Long(fileSize);
@@ -51,14 +47,14 @@ public class FileReceiver extends SwingWorker {
 
     @Override
     protected Object doInBackground() throws Exception {
-        byte[] b=new byte[10000];
+        byte[] b = new byte[10000];
         int i = 0;
         int nbreBytesTransferes = 0;
         init();
         System.out.println("serial " + serial);
         outStream.println("Receive,4\n");
         while (fileSize > nbreBytesTransferes) {
-           
+
             i = sIn.read(b);
             if (i >= 0) {
                 nbreBytesTransferes += i;
@@ -66,8 +62,8 @@ public class FileReceiver extends SwingWorker {
                 fOut.write(b, 0, i);
             }
         }
-         System.out.println("nbreBytesReçus "+nbreBytesTransferes);
-         fOut.flush();
+        System.out.println("nbreBytesReçus " + nbreBytesTransferes);
+        fOut.flush();
         fOut.close();
         sIn.close();
         return null;

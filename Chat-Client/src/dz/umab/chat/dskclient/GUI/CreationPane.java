@@ -3,16 +3,17 @@
  * and open the template in the editor.
  */
 /**
- *
  * @author user
  */
-package GUI;
+package dz.umab.chat.dskclient.GUI;
 
-import java.awt.*;
+import dz.umab.chat.dskclient.client.*;
+import com.borland.jbcl.layout.VerticalFlowLayout;
+
 import javax.swing.*;
-import com.borland.jbcl.layout.*;
-import java.awt.event.*;
-import client.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * <p>Titre : </p>
@@ -70,18 +71,18 @@ public class CreationPane extends Panneau {
         observer.removePaneCreation();
 
         observer.addConnectionPane();
-    //   observer.
+        //   observer.
     }
 
     void jbInit() throws Exception {
         this.setOpaque(false);
         this.setLayout(borderLayout1);
         lesinfo.setLayout(verticalFlowLayout1);
-        labMotDePass.setFont(new java.awt.Font("Arial", 1, 14));
+        labMotDePass.setFont(new Font("Arial", 1, 14));
         labMotDePass.setForeground(Color.darkGray);
         labMotDePass.setText("Mot de pass");
         panemotpass.setLayout(gridLayout3);
-        labPrenom.setFont(new java.awt.Font("Arial", 1, 14));
+        labPrenom.setFont(new Font("Arial", 1, 14));
         labPrenom.setForeground(Color.darkGray);
         labPrenom.setText("Prénom");
         textPrenom.setRequestFocusEnabled(true);
@@ -90,7 +91,7 @@ public class CreationPane extends Panneau {
         textPrenom.setPreferredSize(new Dimension(300, 25));
         textPrenom.setOpaque(true);
         panePrenom.setLayout(gridLayout2);
-        labNom.setFont(new java.awt.Font("Arial", 1, 14));
+        labNom.setFont(new Font("Arial", 1, 14));
         labNom.setForeground(Color.darkGray);
         labNom.setText("Nom");
         textNom.setRequestFocusEnabled(true);
@@ -99,7 +100,7 @@ public class CreationPane extends Panneau {
         textNom.setEnabled(true);
         textNom.setOpaque(true);
         paneNom.setLayout(gridLayout1);
-        labComfirmer.setFont(new java.awt.Font("Arial", 1, 14));
+        labComfirmer.setFont(new Font("Arial", 1, 14));
         labComfirmer.setForeground(Color.darkGray);
         labComfirmer.setText("Comfirmer le mot de pass");
         panConfirm.setLayout(gridLayout4);
@@ -121,13 +122,13 @@ public class CreationPane extends Panneau {
         textPseudo.setRequestFocusEnabled(true);
         labPseudo.setText("Pseudo");
         labPseudo.setForeground(Color.darkGray);
-        labPseudo.setFont(new java.awt.Font("Arial", 1, 14));
+        labPseudo.setFont(new Font("Arial", 1, 14));
         panePseudo.setLayout(gridLayout5);
 
         reponse.setAlignmentX((float) 0.5);
 
         message.setBackground(Color.white);
-        message.setFont(new java.awt.Font("Dialog", 1, 16));
+        message.setFont(new Font("Dialog", 1, 16));
         message.setForeground(Color.WHITE);
         message.setOpaque(false);
 
@@ -182,12 +183,12 @@ public class CreationPane extends Panneau {
             ClientApp.worker.submit(createTask);            //MainFrame.client.Cree(coordonnes);
         } else {
             labEntete.setText("mot de pass erreur");
-        //message.setText("Veuillez resaisir vos coordonnées");
+            //message.setText("Veuillez resaisir vos coordonnées");
         }
     }
 }
 
-class CreationPane_textPrenom_actionAdapter implements java.awt.event.ActionListener {
+class CreationPane_textPrenom_actionAdapter implements ActionListener {
 
     CreationPane adaptee;
 
@@ -200,7 +201,7 @@ class CreationPane_textPrenom_actionAdapter implements java.awt.event.ActionList
     }
 }
 
-class CreationPane_btValider_actionAdapter implements java.awt.event.ActionListener {
+class CreationPane_btValider_actionAdapter implements ActionListener {
 
     CreationPane adaptee;
 
@@ -213,7 +214,7 @@ class CreationPane_btValider_actionAdapter implements java.awt.event.ActionListe
     }
 }
 
-class CreationPane_btAnnuler_actionAdapter implements java.awt.event.ActionListener {
+class CreationPane_btAnnuler_actionAdapter implements ActionListener {
 
     CreationPane adaptee;
 

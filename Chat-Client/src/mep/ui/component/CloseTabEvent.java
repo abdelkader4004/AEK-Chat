@@ -5,34 +5,32 @@
 package mep.ui.component;
 
 /**
- * Objet renvoyé au listener lors de la fermeture d'un onglet
- * @author mep
+ * Objet renvoyï¿½ au listener lors de la fermeture d'un onglet
  *
+ * @author mep
  */
 public class CloseTabEvent {
     private MTabbedPane tabbedPane;
     private int tabIndex;
-    
-    public CloseTabEvent (MTabbedPane tabbedPane, int tabIndex) {
+
+    public CloseTabEvent(MTabbedPane tabbedPane, int tabIndex) {
         this.tabbedPane = tabbedPane;
         this.tabIndex = tabIndex;
     }
 
-    
+
     /**
-     * 
-     * @return l'index de l'onglet cliqué
+     * @return l'index de l'onglet cliquï¿½
      */
-    public int getTabIndex () {
+    public int getTabIndex() {
         return this.tabIndex;
     }
-    
+
     /**
-     * 
      * @return le tabbedPane qui a subit le clique
      */
-    public MTabbedPane getTabbedPane () {
+    public MTabbedPane getTabbedPane() {
         return this.tabbedPane;
     }
-    
+
 }

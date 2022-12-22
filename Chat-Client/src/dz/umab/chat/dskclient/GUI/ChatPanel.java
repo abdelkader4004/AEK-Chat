@@ -1,18 +1,22 @@
-package GUI;
+package dz.umab.chat.dskclient.GUI;
 
-import GUI.MainFrame;
-import client.ObserverInterface;
-import java.awt.*;
+import dz.umab.chat.dskclient.client.ObserverInterface;
+import com.borland.jbcl.layout.VerticalFlowLayout;
+
 import javax.swing.*;
-import com.borland.jbcl.layout.*;
-import java.awt.event.*;
-import javax.swing.border.*;
+import javax.swing.border.Border;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.TitledBorder;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * <p>Titre : </p>
  * <p>Description : </p>
  * <p>Copyright : Copyright (c) 2010</p>
  * <p>Société : </p>
+ *
  * @author non attribuable
  * @version 1.0
  */
@@ -68,14 +72,14 @@ public class ChatPanel extends JPanel {
         if (!textSend.getText().equals("")) {
             try {
                 MainFrame.client.WriteMessage("SendIM" + "," + MainFrame.client.getID(pseudo) + "," + textSend.getText());
-               System.out.println("btSend_actionPerformed"+"SendIM" + "," + pseudo + "," + textSend.getText());
+                System.out.println("btSend_actionPerformed" + "SendIM" + "," + pseudo + "," + textSend.getText());
                 JPanel p = new messagePane(new ImageIcon(ContactListTableModel.class.getResource("User.png")),
                         "Je dit:", textSend.getText(), new ImageIcon(ContactListTableModel.class.getResource("User.png")));
                 panDialogSequence.add(p);
                 textSend.setText("");
                 scrollPane.validate();
                 panDialogSequence.scrollRectToVisible(new Rectangle(0, panDialogSequence.getHeight() - 1, panDialogSequence.getWidth(), 1));
-            
+
             } catch (Exception ex) {
             }
         }
@@ -89,7 +93,6 @@ public class ChatPanel extends JPanel {
             panDialogSequence.add(p);
             scrollPane.validate();
             panDialogSequence.scrollRectToVisible(new Rectangle(0, panDialogSequence.getHeight() - 1, panDialogSequence.getWidth(), 1));
-            
 
 
         } catch (Exception ex) {
@@ -104,7 +107,7 @@ public class ChatPanel extends JPanel {
 }
 
 class ChatPanel_btSend_actionAdapter
-        implements java.awt.event.ActionListener {
+        implements ActionListener {
 
     ChatPanel adaptee;
 
@@ -117,7 +120,7 @@ class ChatPanel_btSend_actionAdapter
     }
 }
 
-class ChatPanel_textSend_actionAdapter  implements java.awt.event.ActionListener {
+class ChatPanel_textSend_actionAdapter implements ActionListener {
 
     ChatPanel adaptee;
 

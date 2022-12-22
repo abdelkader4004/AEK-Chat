@@ -1,19 +1,16 @@
-package GUI;
+package dz.umab.chat.dskclient.GUI;
 
-import client.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.util.Hashtable;
-import javax.swing.*;
-import java.awt.Color;
-
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
+import dz.umab.chat.dskclient.client.*;
 import mep.ui.component.CloseTabEvent;
 import mep.ui.component.CloseTabListener;
 import mep.ui.component.MTabbedPane;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.util.Hashtable;
 
 
 /**
@@ -21,11 +18,14 @@ import mep.ui.component.MTabbedPane;
  * <p>Description : </p>
  * <p>Copyright : Copyright (c) 2010</p>
  * <p>Soci�t� : </p>
+ *
  * @author non attribuable
  * @version 1.0
  */
 public class MainFrame extends JFrame implements ObserverInterface {
 
+    public static Client client;
+    public static ContactListPanel contactListPanel;
     static Hashtable<Long, ChatPanel> discussionPaneList = new Hashtable<Long, ChatPanel>();
     JPanel contentPane;
     JMenuBar jMenuBar1 = new JMenuBar();
@@ -41,10 +41,8 @@ public class MainFrame extends JFrame implements ObserverInterface {
     JLabel statusBar = new JLabel();
     BorderLayout borderLayout1 = new BorderLayout();
     MTabbedPane MainTabbedPane = new MTabbedPane(Color.WHITE, Color.WHITE);
-    public static Client client;
     ConnectionPane connectionPane = new ConnectionPane(this);
     InfiniteProgressPanel infiniteProgressPanel;
-    public static ContactListPanel contactListPanel;
     ChatPanel proom;
     CreationPane creationPane;
 
@@ -62,8 +60,8 @@ public class MainFrame extends JFrame implements ObserverInterface {
     }
 
     void mainTabbedPane_TabClosed(CloseTabEvent event) {
-     ChatPanel cp=  (ChatPanel) MainTabbedPane.getComponent(event.getTabIndex());
-   
+        ChatPanel cp = (ChatPanel) MainTabbedPane.getComponent(event.getTabIndex());
+
 
     }
 
@@ -100,7 +98,7 @@ public class MainFrame extends JFrame implements ObserverInterface {
         contentPane.add(MainTabbedPane, BorderLayout.CENTER);
         MainTabbedPane.add(connectionPane, "Connexion");
         MainTabbedPane.setIconAt(0, new ImageIcon(MainFrame.class.getResource("User.png")));
-      //  MainTabbedPane.addCloseTabAction(listener);
+        //  MainTabbedPane.addCloseTabAction(listener);
     }
 
     //Op�ration Fichier | Quitter effectu�e
@@ -226,7 +224,7 @@ public class MainFrame extends JFrame implements ObserverInterface {
             }
             if (!proom.isVisible()) {
                 proom.setVisible(true);
-                
+
             }
             proom.receiveMessage(mes, client.getPseudo(new Long(idEmetteur)));
             MainTabbedPane.setSelectedComponent(proom);
@@ -305,6 +303,7 @@ public class MainFrame extends JFrame implements ObserverInterface {
      * @return boolean
      */
 }
+
 class MainFrame_jMenuFileExit_ActionAdapter implements ActionListener {
 
     MainFrame adaptee;
@@ -343,11 +342,14 @@ class MainFrame_jMenuHelpAbout_ActionAdapter implements ActionListener {
         adaptee.jMenuHelpAbout_actionPerformed(e);
     }
 }
-class MainFrame_MainTabbedPane_CloseTabListener implements CloseTabListener{
-     MainFrame adaptee;
-MainFrame_MainTabbedPane_CloseTabListener(MainFrame adaptee) {
+
+class MainFrame_MainTabbedPane_CloseTabListener implements CloseTabListener {
+    MainFrame adaptee;
+
+    MainFrame_MainTabbedPane_CloseTabListener(MainFrame adaptee) {
         this.adaptee = adaptee;
     }
+
     public void closeAction(CloseTabEvent event) {
         adaptee.mainTabbedPane_TabClosed(event);
     }

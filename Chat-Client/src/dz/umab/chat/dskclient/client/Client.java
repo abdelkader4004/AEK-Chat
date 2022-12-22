@@ -1,42 +1,64 @@
-package client;
+package dz.umab.chat.dskclient.client;
 
 /**
  * <p>Titre : </p>
  * <p>Description : </p>
  * <p>Copyright : Copyright (c) 2010</p>
  * <p>Soci�t� : </p>
+ *
  * @author non attribuable
  * @version 1.0
  * cette  classs est une thread cree pour recevoir des message du serveur
- *quelque soit un neveau message ou  un message consernont l'etas des client
+ * quelque soit un neveau message ou  un message consernont l'etas des client
  * du list contact  (conneté,deconnecté)
  */
-import java.io.*;
-import java.net.*;
-import java.util.*;
+
 import javax.swing.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.util.Enumeration;
+import java.util.Hashtable;
+import java.util.StringTokenizer;
+import java.util.Vector;
 
 public class Client implements ClientInterface {
 
+    public static String fileServerHost = "localhost";
     //public volatile static boolean notAuthenticated = true;
     static String serverHost = "localhost";
-    public static String fileServerHost = "localhost";
     static int port = 1234;
+    public Hashtable<Long, FilePaneInterface> fileTable = new Hashtable<Long, FilePaneInterface>();
     JTextArea Text = null;
     Vector v = null;
     JList list = null;
+    long localSerial = 0;
     private Socket socket;
     private String login;
     private int id;
     private Hashtable<Long, String> contactList = new Hashtable<Long, String>();
     private Hashtable<String, Long> pseudIdContactList = new Hashtable<String, Long>();
-    public Hashtable<Long, FilePaneInterface> fileTable = new Hashtable<Long, FilePaneInterface>();
     private Hashtable<Long, Long> serialTable = new Hashtable<Long, Long>();
-    long localSerial = 0;
     private BufferedReader din = null; // flux d'entr�e
     private PrintWriter dout = null; // flux de sortie
     //ClientInterface clientInterface;
 // Constructor
+
+    private static String IdentifieHost(InetAddress Host) {
+// identification de Host
+        String ipHost = Host.getHostAddress();
+        String nomHost = Host.getHostName();
+        String idHost;
+        if (nomHost == null) {
+            idHost = ipHost;
+        } else {
+            idHost = ipHost + "," + nomHost;
+        }
+        return idHost;
+    }
 
     /*  public Client(ClientInterface clientInterface) {
     // this.clientInterface = clientInterface;
@@ -54,14 +76,16 @@ public class Client implements ClientInterface {
         }
     }
 
-   public long addFilePane(FilePaneInterface p) {
+    public long addFilePane(FilePaneInterface p) {
         fileTable.put(localSerial, p);
-       localSerial++;
-        return localSerial-1;
+        localSerial++;
+        return localSerial - 1;
     }
-public void addFielSerial(Long serial,Long localSerial){
-    serialTable.put(serial, localSerial);
-}
+
+    public void addFielSerial(Long serial, Long localSerial) {
+        serialTable.put(serial, localSerial);
+    }
+
     public boolean authentifier(String login, String motpass) {
         String messag = "", a = "authentifier" + "," + login + "," + motpass;
         System.out.println(a);
@@ -139,13 +163,6 @@ public void addFielSerial(Long serial,Long localSerial){
     public Socket getSocket() {
         return this.socket;
     }
-
-    public void showlist() {
-        Enumeration e = contactList.keys();
-        while (e.hasMoreElements()) {
-            System.out.println(contactList.get(e.nextElement()));
-        }
-    }
     /*
     public String chercherUnNeveaucontact(String mot) {
     String list = "";
@@ -161,6 +178,13 @@ public void addFielSerial(Long serial,Long localSerial){
     return list;
     }
      */
+
+    public void showlist() {
+        Enumeration e = contactList.keys();
+        while (e.hasMoreElements()) {
+            System.out.println(contactList.get(e.nextElement()));
+        }
+    }
 
     public void WriteMessage(String mes) {
         dout.println(mes);
@@ -211,18 +235,5 @@ public void addFielSerial(Long serial,Long localSerial){
 
         } catch (IOException ex) {
         }
-    }
-
-    private static String IdentifieHost(InetAddress Host) {
-// identification de Host
-        String ipHost = Host.getHostAddress();
-        String nomHost = Host.getHostName();
-        String idHost;
-        if (nomHost == null) {
-            idHost = ipHost;
-        } else {
-            idHost = ipHost + "," + nomHost;
-        }
-        return idHost;
     }
 }

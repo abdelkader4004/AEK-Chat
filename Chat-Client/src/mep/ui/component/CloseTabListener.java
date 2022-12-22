@@ -8,13 +8,14 @@ import java.util.EventListener;
 
 /**
  * Listener pour catcher les evenements de fermeture d'onglet
+ *
  * @author mep
- * 
  */
 public interface CloseTabListener extends EventListener {
     /**
-     * Méthode appeler lorsque que la croix est cliqué dans un MTabbedPanePlus
+     * Mï¿½thode appeler lorsque que la croix est cliquï¿½ dans un MTabbedPanePlus
+     *
      * @param event
      */
-    public void closeAction (CloseTabEvent event);
+    public void closeAction(CloseTabEvent event);
 }

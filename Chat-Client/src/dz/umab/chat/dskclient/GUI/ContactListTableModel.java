@@ -1,16 +1,17 @@
-package GUI;
+package dz.umab.chat.dskclient.GUI;
 
-import java.util.*;
+import dz.umab.chat.dskclient.client.*;
+
 import javax.swing.*;
-import javax.swing.table.*;
-import client.*;
+import javax.swing.table.AbstractTableModel;
+import java.util.Vector;
 
 /**
- *
  * <p>Titre : </p>
  * <p>Description : </p>
  * <p>Copyright : Copyright (c) 2010</p>
  * <p>Soci�t� : </p>
+ *
  * @author non attribuable
  * @version 1.0
  */
@@ -56,7 +57,7 @@ public class ContactListTableModel
     /**
      * getValueAt
      *
-     * @param rowIndex int
+     * @param rowIndex    int
      * @param columnIndex int
      * @return Object
      */
@@ -71,7 +72,6 @@ public class ContactListTableModel
     }
 
     /**
-     *
      * @param col int
      * @return String
      */
@@ -82,7 +82,6 @@ public class ContactListTableModel
     }
 
     /**
-     *
      * @param col int
      * @return Class
      */
@@ -110,7 +109,7 @@ public class ContactListTableModel
     }
 
     public int getState(int index) {
-        if (states[0].equals(((JLabel)dataList[0].elementAt(index)).getIcon())) {
+        if (states[0].equals(((JLabel) dataList[0].elementAt(index)).getIcon())) {
             return 0;
         } else {
             return 1;

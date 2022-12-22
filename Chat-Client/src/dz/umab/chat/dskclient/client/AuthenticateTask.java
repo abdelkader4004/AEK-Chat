@@ -2,17 +2,14 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package client;
+package dz.umab.chat.dskclient.client;
 
-import GUI.MainFrame;
-import java.lang.reflect.InvocationTargetException;
+import dz.umab.chat.dskclient.GUI.MainFrame;
+
+import javax.swing.*;
 import java.util.concurrent.Callable;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.SwingUtilities;
 
 /**
- *
  * @author user
  */
 public class AuthenticateTask<Boolean> implements Callable {
@@ -45,9 +42,6 @@ public class AuthenticateTask<Boolean> implements Callable {
         }
 
         SwingUtilities.invokeLater(new RunnableImpl(result));
-
-
-
 
 
         System.out.println("authentication task= " + result);
