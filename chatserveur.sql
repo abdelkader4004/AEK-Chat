@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `freedb_chatserveur`
+-- Base de données : `chatserveur`
 --
 
 -- --------------------------------------------------------
@@ -33,13 +33,7 @@ CREATE TABLE `client` (
   `motpass` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Déchargement des données de la table `client`
---
 
-INSERT INTO `client` (`id_client`, `pseodo`, `motpass`) VALUES
-(2, 'x', 'x'),
-(3, 'n', 'n');
 
 -- --------------------------------------------------------
 
