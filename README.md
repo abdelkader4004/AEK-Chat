@@ -9,3 +9,4 @@ This project contains three modules:
 The users data is stored in a MySQL data base which contains:
 - A table for users and,
 - A relation table which links each users to its friends.
+The sql script "chatserveur.sql" conains the database structure.
