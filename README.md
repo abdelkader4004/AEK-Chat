@@ -8,6 +8,6 @@ This project contains three modules:
 # Data
 The users data is stored in a MySQL database (the sql script "chatserveur.sql" conains the database structure.) which contains:
 - A table for users and,
-- A relation table which links each users to their friends.
+- A relation table which links each user to its friends.
 
 ![image](https://user-images.githubusercontent.com/17766512/209360618-90bebf92-926c-41d5-af2e-07d6624c6938.png)
